@@ -1,0 +1,138 @@
+[
+    {
+        "id": "$tour1",
+        "title": "Weekend Safari",
+        "description": "Experience the world-famous Maasai Mara with game drives, cultural visits, and luxury camping under the stars.",
+        "duration": "2 days",
+        "groupSize": "2-6 people",
+        "price": "$350",
+        "category": "Nature",
+        "type": "Weekend Getaways",
+        "image": "https://naicef.com/wp-content/uploads/2025/01/Nairobi-National-Park-Nairobi-National-Park-Nairobi-Nairobi-National-Park-safari-Nairobi-National-Park-animal-orphanage-Nairobi-National-Park-entrance-fees.jpg",
+        "gallery": [
+            "https://upload.wikimedia.org/wikipedia/commons/1/17/Masai_Mara_at_Sunset.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/1/17/Masai_Mara_at_Sunset.jpg",
+            "https://upload.wikimedia.org/wikipedia/commons/1/17/Masai_Mara_at_Sunset.jpg"
+        ],
+        "itinerary": [
+            "Day 1: 6:00 AM - Depart Nairobi for Maasai Mara",
+            "Day 1: 12:00 PM - Arrive and have lunch",
+            "Day 1: 3:00 PM - Afternoon game drive",
+            "Day 1: 7:00 PM - Dinner and overnight at luxury camp",
+            "Day 2: 6:00 AM - Morning game drive",
+            "Day 2: 10:00 AM - Visit Maasai village",
+            "Day 2: 12:00 PM - Lunch and departure",
+            "Day 2: 6:00 PM - Arrive back in Nairobi"
+        ],
+        "included": [
+            "Professional guide and driver",
+            "Park entrance fees",
+            "Game drives in safari vehicle",
+            "All meals",
+            "Luxury camping accommodation",
+            "Hotel pickup and drop-off"
+        ]
+    },
+    {
+        "id": "$tour2",
+        "title": "Maasai  Weekend Safari",
+        "description": "Experience the world-famous Maasai Mara with game drives, cultural visits, and luxury camping under the stars.",
+        "duration": "2 days",
+        "groupSize": "2-6 people",
+        "price": "$350",
+        "category": "Day Trip",
+        "type": "Weekend Getaways",
+        "image": "https://naicef.com/wp-content/uploads/2025/01/Nairobi-National-Park-Nairobi-National-Park-Nairobi-Nairobi-National-Park-safari-Nairobi-National-Park-animal-orphanage-Nairobi-National-Park-entrance-fees.jpg",
+        "gallery": [
+            "https://example.com/images/maasai-mara-game-drive.jpg",
+            "https://example.com/images/maasai-village.jpg",
+            "https://example.com/images/maasai-mara-camp.jpg"
+        ],
+        "itinerary": [
+            "Day 1: 6:00 AM - Depart Nairobi for Maasai Mara",
+            "Day 1: 12:00 PM - Arrive and have lunch",
+            "Day 1: 3:00 PM - Afternoon game drive",
+            "Day 1: 7:00 PM - Dinner and overnight at luxury camp",
+            "Day 2: 6:00 AM - Morning game drive",
+            "Day 2: 10:00 AM - Visit Maasai village",
+            "Day 2: 12:00 PM - Lunch and departure",
+            "Day 2: 6:00 PM - Arrive back in Nairobi"
+        ],
+        "included": [
+            "Professional guide and driver",
+            "Park entrance fees",
+            "Game drives in safari vehicle",
+            "All meals",
+            "Luxury camping accommodation",
+            "Hotel pickup and drop-off"
+        ]
+    },
+    {
+        "id": "$tour3",
+        "title": "Maasai Mara Weekend",
+        "description": "Experience the world-famous Maasai Mara with game drives, cultural visits, and luxury camping under the stars.",
+        "duration": "2 days",
+        "groupSize": "2-6 people",
+        "price": "$350",
+        "category": "Culture",
+        "type": "Weekend Getaways",
+        "image": "https://naicef.com/wp-content/uploads/2025/01/Nairobi-National-Park-Nairobi-National-Park-Nairobi-Nairobi-National-Park-safari-Nairobi-National-Park-animal-orphanage-Nairobi-National-Park-entrance-fees.jpg",
+        "gallery": [
+            "https://example.com/images/maasai-mara-game-drive.jpg",
+            "https://example.com/images/maasai-village.jpg",
+            "https://example.com/images/maasai-mara-camp.jpg"
+        ],
+        "itinerary": [
+            "Day 1: 6:00 AM - Depart Nairobi for Maasai Mara",
+            "Day 1: 12:00 PM - Arrive and have lunch",
+            "Day 1: 3:00 PM - Afternoon game drive",
+            "Day 1: 7:00 PM - Dinner and overnight at luxury camp",
+            "Day 2: 6:00 AM - Morning game drive",
+            "Day 2: 10:00 AM - Visit Maasai village",
+            "Day 2: 12:00 PM - Lunch and departure",
+            "Day 2: 6:00 PM - Arrive back in Nairobi"
+        ],
+        "included": [
+            "Professional guide and driver",
+            "Park entrance fees",
+            "Game drives in safari vehicle",
+            "All meals",
+            "Luxury camping accommodation",
+            "Hotel pickup and drop-off"
+        ]
+    },
+    {
+        "id": "$tour4",
+        "title": "Maasai Mara Weekend Safari",
+        "description": "Experience the world-famous Maasai Mara with game drives, cultural visits, and luxury camping under the stars.",
+        "duration": "2 days",
+        "groupSize": "2-6 people",
+        "price": "$350",
+        "category": "Weekend Getaway",
+        "type": "Weekend Getaways",
+        "image": "https://naicef.com/wp-content/uploads/2025/01/Nairobi-National-Park-Nairobi-National-Park-Nairobi-Nairobi-National-Park-safari-Nairobi-National-Park-animal-orphanage-Nairobi-National-Park-entrance-fees.jpg",
+        "gallery": [
+            "https://example.com/images/maasai-mara-game-drive.jpg",
+            "https://example.com/images/maasai-village.jpg",
+            "https://example.com/images/maasai-mara-camp.jpg"
+        ],
+        "itinerary": [
+            "Day 1: 6:00 AM - Depart Nairobi for Maasai Mara",
+            "Day 1: 12:00 PM - Arrive and have lunch",
+            "Day 1: 3:00 PM - Afternoon game drive",
+            "Day 1: 7:00 PM - Dinner and overnight at luxury camp",
+            "Day 2: 6:00 AM - Morning game drive",
+            "Day 2: 10:00 AM - Visit Maasai village",
+            "Day 2: 12:00 PM - Lunch and departure",
+            "Day 2: 6:00 PM - Arrive back in Nairobi"
+        ],
+        "included": [
+            "Professional guide and driver",
+            "Park entrance fees",
+            "Game drives in safari vehicle",
+            "All meals",
+            "Luxury camping accommodation",
+            "Hotel pickup and drop-off"
+        ]
+    }
+]

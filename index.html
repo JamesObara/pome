@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Touchdown Nairobi - Explore Nairobi</title>
+    <link rel="shortcut icon" href="/img/2.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            min-height: 100vh;
+            background-color: #fafaf9;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        
+        /* Header */
+        header {
+            background: white;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo svg {
+            width: 2.2rem;
+            height: 2.2rem;
+            color: #166534;
+        }
+        
+        .logo-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #166534;
+        }
+        
+        .nav-links {
+            display: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a.active {
+            border-bottom: 2px solid #16a34a;
+        }
+        
+        .nav-links a {
+            color: #166534;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #16a34a;
+        }
+        
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
+        }
+        
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 600px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4)), url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><rect fill="%23166534" width="1200" height="600"/><circle fill="%2316a34a" cx="300" cy="150" r="80"/><rect fill="%2322c55e" x="800" y="400" width="200" height="100"/></svg>');
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .hero-content {
+            text-align: center;
+            color: white;
+            max-width: 800px;
+            padding: 0 1rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+            color: #d6d3d1;
+        }
+        
+        @media (min-width: 768px) {
+            .hero h1 {
+                font-size: 4rem;
+            }
+            .hero p {
+                font-size: 1.5rem;
+            }
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 2rem;
+            background: #16a34a;
+            color: white;
+            text-decoration: none;
+            border-radius: 0.375rem;
+            font-size: 1.125rem;
+            font-weight: 500;
+            transition: background 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: #15803d;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid #16a34a;
+            color: #16a34a;
+        }
+        
+        .btn-outline:hover {
+            background: #f0fdf4;
+        }
+        
+        /* Sections */
+        .section {
+            padding: 4rem 0;
+        }
+        
+        .section-white {
+            background: white;
+        }
+        
+        .section-gray {
+            background: #f5f5f4;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-header h2 {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #166534;
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            font-size: 1.125rem;
+            color: #57534e;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        /* Grid */
+        .grid {
+            display: grid;
+            gap: 2rem;
+        }
+        
+        .grid-3 {
+            grid-template-columns: 1fr;
+        }
+        
+        @media (min-width: 768px) {
+            .grid-3 {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            transition: box-shadow 0.3s;
+        }
+        
+        .card:hover {
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+        
+        .card-image {
+            height: 16rem;
+            background: linear-gradient(45deg, #166534, #22c55e);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.125rem;
+        }
+        
+        .card-content {
+            padding: 1.5rem;
+        }
+        
+        .card-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #166534;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card-description {
+            color: #57534e;
+            margin-bottom: 1rem;
+        }
+        
+        .card-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .price {
+            font-size: 1.125rem;
+            font-weight: bold;
+            color: #15803d;
+        }
+        
+        /* Stars */
+        .stars {
+            display: flex;
+            gap: 0.25rem;
+            margin-bottom: 1rem;
+        }
+        
+        .star {
+            width: 1.25rem;
+            height: 1.25rem;
+            background: #fbbf24;
+            clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+        }
+        
+        /* Feature boxes */
+        .feature {
+            text-align: center;
+        }
+        
+        .feature-icon {
+            width: 4rem;
+            height: 4rem;
+            background: #dcfce7;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1rem;
+        }
+        
+        .feature-icon svg {
+            width: 2rem;
+            height: 2rem;
+            color: #16a34a;
+        }
+        
+        .feature h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #166534;
+            margin-bottom: 0.75rem;
+        }
+        
+        .feature p {
+            color: #57534e;
+        }
+        
+        /* Footer */
+        footer {
+            background: #166534;
+            color: white;
+        }
+        
+        .footer-content {
+            padding: 3rem 0;
+        }
+        
+        .footer-brand {
+            grid-column: span 2;
+        }
+        
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-logo svg {
+            width: 2rem;
+            height: 2rem;
+            color: #86efac;
+        }
+        
+        .footer-logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+        
+        .footer-description {
+            color: #bbf7d0;
+            margin-bottom: 1rem;
+            max-width: 28rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .social-links a {
+            color: #86efac;
+            transition: color 0.3s;
+        }
+        
+        .social-links a:hover {
+            color: white;
+        }
+        
+        .social-links svg {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+        
+        .footer-section h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-links a {
+            color: #bbf7d0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+        
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 0.5rem;
+        }
+        
+        .contact-item svg {
+            width: 1rem;
+            height: 1rem;
+            color: #86efac;
+            margin-top: 0.125rem;
+        }
+        
+        .contact-item span {
+            color: #bbf7d0;
+            font-size: 0.875rem;
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid #15803d;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            text-align: center;
+        }
+        
+        .footer-bottom p {
+            color: #bbf7d0;
+            font-size: 0.875rem;
+        }
+        
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr;
+            }
+        }
+        
+        .testimonial-quote {
+            font-style: italic;
+            color: #44403c;
+            margin-bottom: 1rem;
+        }
+        
+        .testimonial-author {
+            font-weight: 600;
+            color: #166534;
+        }
+        
+        .testimonial-country {
+            color: #6b7280;
+            font-size: 0.875rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <?xml version="1.0"?>
+                        <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+                        <svg enable-background="new 0 0 512 512" height="700px" id="passenger" version="1.1" viewBox="0 0 512 512" width="700px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path fill="#166534" d="M336.53,64.002c-4.204,7.342-6.651,14.944-8.067,21.604c-3.655,17.198,3.353,35.099,17.842,45.058  c7.506,5.159,16.122,9.426,23.99,12.752c12.822,5.421,27.5-1.621,31.434-14.974l9.393-31.891  c6.191-21.026-5.245-43.205-25.966-50.352C366.777,39.86,346.19,47.132,336.53,64.002z"/>
+                        <path fill="#166534" d="M416.53,443.222l-61.046-148.163l17.32-95.263c1.473-8.095,0.361-16.478-3.369-23.811  c-6.434-12.648-20.309-29.393-48.925-30.731c0,0-2.868-0.424-7.003,0.239c-8.209,1.316-15.371,6.309-19.826,13.327l-67.955,107.028  c-3.028,4.77-3.115,10.582-0.717,15.297l-27.724,39.558L151.4,288.418c-10.291-7.24-24.502-4.768-31.743,5.523l-43.22,61.43  c-14.444,20.529-9.51,48.88,11.019,63.324l10.781,7.585c-1.165,3.278-1.831,6.791-1.831,10.468c0,17.298,14.022,31.32,31.32,31.32  c17.298,0,31.32-14.022,31.32-31.32c0-7.082-2.379-13.594-6.343-18.84l90.371-128.943c3.235-0.936,6.188-2.923,8.289-5.875  l55.534-78.048l-15.078,66.221c-1.994,8.753-0.587,17.936,3.936,25.69l96.773,165.939c1.869,3.205,5.301,5.176,9.011,5.176h32.429  c3.926,0,6.481-4.098,4.778-7.635C435.721,454.152,429.386,445.869,416.53,443.222z M143.563,436.748  c0,8.746-7.09,15.837-15.836,15.837s-15.836-7.091-15.836-15.837c0-0.28,0.027-0.555,0.042-0.832  c0.424-8.124,6.955-14.613,15.096-14.969c0.233-0.01,0.462-0.035,0.698-0.035c5.11,0,9.642,2.431,12.537,6.188  c1.121,1.454,2.006,3.1,2.57,4.892C143.306,433.493,143.563,435.09,143.563,436.748z"/>
+                        <path fill="#166534" d="M298.915,327.521c-2.547-3.994-8.654-2.992-9.751,1.616c-9.493,39.877-37.082,79.887-52.97,97.255  c-4.702,5.14-5.115,12.887-1.081,18.565l13.533,19.046c1.812,2.551,4.746,4.064,7.874,4.064h11.514c2.257,0,3.974-1.969,3.743-4.214  c-1.196-11.712-6.867-21.455-6.867-21.455c29.209-30.583,44.936-60.499,51.607-75.314c1.97-4.372,1.613-9.431-0.965-13.474  L298.915,327.521z"/>
+                        <path fill="#166534" d="M385.428,229.522c-2.087-2.064-5.633-0.979-6.207,1.9l-5.199,26.108c-0.399,2.01,0.295,4.08,1.827,5.442l45.262,40.236  c5.935,5.276,15.103,4.396,19.926-1.911c4.175-5.461,3.642-13.175-1.245-18.009L385.428,229.522z"/>
+                        </svg>
+
+                    <span class="logo-text">Touchdown Nairobi</span>
+                </div>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="nav-links" id="nav-links">
+                    <a href="/" class="active">Home</a>
+                    <a href="/tours.html">Tours</a>
+                    <a href="/about.html">About</a>
+                    <a href="/contact.html">Contact</a>
+                    <a href="/faq.html">FAQ</a>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Explore Nairobi with Peterson</h1>
+            <p>Discover the heart of Kenya through authentic local experiences, wildlife adventures, and cultural immersion</p>
+            <a href="#contact" class="btn">Book a Trip</a>
+        </div>
+    </section>
+
+    <!-- Featured Experiences -->
+    <section class="section section-white">
+        <div class="container">
+            <div class="section-header">
+                <h2>Featured Experiences</h2>
+                <p>Handpicked adventures that showcase the best of Nairobi and its surroundings</p>
+            </div>
+            <div class="grid grid-3" id="tours-container">
+                <!-- Tours will be dynamically inserted here -->
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews -->
+    <section class="section section-gray">
+        <div class="container">
+            <div class="section-header">
+                <h2>What Our Guests Say</h2>
+                <p>Real experiences from travelers who explored Nairobi with us</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="stars">
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                        </div>
+                        <p class="testimonial-quote">"Peterson made our Nairobi visit unforgettable! His local knowledge and friendly personality made all the difference. Highly recommended!"</p>
+                        <div>
+                            <p class="testimonial-author">Sarah Johnson</p>
+                            <p class="testimonial-country">United Kingdom</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="stars">
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                        </div>
+                        <p class="testimonial-quote">"Amazing safari experience! Peterson's expertise and passion for wildlife made our trip educational and exciting. Perfect airport pickup too!"</p>
+                        <div>
+                            <p class="testimonial-author">Michael Chen</p>
+                            <p class="testimonial-country">Australia</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="card">
+                    <div class="card-content">
+                        <div class="stars">
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                            <div class="star"></div>
+                        </div>
+                        <p class="testimonial-quote">"Cultural tour was fantastic! Peterson showed us the real Nairobi - hidden gems and authentic experiences you won't find in guidebooks."</p>
+                        <div>
+                            <p class="testimonial-author">Emma Rodriguez</p>
+                            <p class="testimonial-country">Spain</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="section section-white">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Choose Peterson Tours</h2>
+                <p>Experience the difference of authentic, personalized service</p>
+            </div>
+            <div class="grid grid-3">
+                <div class="feature">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                        </svg>
+                    </div>
+                    <h3>Authentic Local Experiences</h3>
+                    <p>Born and raised in Nairobi, Peterson shares genuine insights and hidden gems that only locals know</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                        </svg>
+                    </div>
+                    <h3>Reliable Airport Pickup</h3>
+                    <p>Stress-free arrival with punctual airport transfers and seamless coordination from landing to departure</p>
+                </div>
+                <div class="feature">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                            <circle cx="9" cy="7" r="4"/>
+                            <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                            <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                        </svg>
+                    </div>
+                    <h3>Friendly Personal Guide</h3>
+                    <p>More than a guide - Peterson becomes your local friend, ensuring memorable and safe adventures</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="grid footer-grid">
+                    <!-- Brand -->
+                    <div class="footer-brand">
+                        <div class="footer-logo">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                <circle cx="12" cy="10" r="3"/>
+                            </svg>
+                            <span class="footer-logo-text">Peterson Tours Kenya</span>
+                        </div>
+                        <p class="footer-description">
+                            Authentic Kenyan experiences with a local guide who's passionate about sharing the beauty, wildlife, and culture of his homeland.
+                        </p>
+                        <div class="social-links">
+                            <a href="#">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                                </svg>
+                            </a>
+                            <a href="#">
+                                <svg viewBox="00 0 24 24" fill="currentColor">
+                                    <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.097.118.112.221.085.343-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.749-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24c6.624 0 11.99-5.367 11.99-12.013C24.007 5.367 18.641.001 12.017.001z"/>
+                                </svg>
+                            </a>
+                            <a href="#">
+                                <svg viewBox="0 0 24 24" fill="currentColor">
+                                    <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Quick Links -->
+                    <div class="footer-section">
+                        <h3>Quick Links</h3>
+                        <ul class="footer-links">
+                            <li><a href="/">Home</a></li>
+                            <li><a href="/tours.html">Tours & Activities</a></li>
+                            <li><a href="/about.html">About Peterson</a></li>
+                            <li><a href="/contact.html">Contact Us</a></li>
+                            <li><a href="/faq.html">FAQ</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Contact Info -->
+                    <div class="footer-section">
+                        <h3>Contact Info</h3>
+                        <div class="contact-info">
+                            <div class="contact-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                </svg>
+                                <span>+254 712 345 678</span>
+                            </div>
+                            <div class="contact-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                    <polyline points="22,6 12,13 2,6"/>
+                                </svg>
+                                <span>peterson@tourskenya.com</span>
+                            </div>
+                            <div class="contact-item">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/>
+                                    <circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                <span>Nairobi, Kenya</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Bottom Bar -->
+                <div class="footer-bottom">
+                    <p>© 2025 Peterson Tours Kenya. All rights reserved. | Crafted with ❤️ in Nairobi</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('nav-links');
+
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+        });
+
+        function shuffleArray(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+            return array;
+        }
+
+        function createTourCard(tour) {
+            return `
+                <div class="card">
+                    <div class="card-image" style="background: url('${tour.image}') center/cover no-repeat;">
+                        ${!tour.image ? tour.title : ''}
+                    </div>
+                    <div class="card-content">
+                        <h3 class="card-title">${tour.title}</h3>
+                        <p class="card-description">${tour.description}</p>
+                        <div class="card-footer">
+                            <span class="price">${tour.price}</span>
+                            <a href="tour.html?id=${tour.id}" class="btn btn-outline">Learn More</a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Fetch tours from tours.json and display up to 3 random tours
+        fetch('data/tours.json')
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                // Shuffle tours and take up to 3
+                const shuffledTours = shuffleArray(data).slice(0, 3);
+                const toursContainer = document.getElementById('tours-container');
+                toursContainer.innerHTML = shuffledTours.map(tour => createTourCard(tour)).join('');
+            })
+            .catch(error => {
+                console.error('Error fetching tours:', error);
+                // Fallback to static content if fetch fails
+                document.getElementById('tours-container').innerHTML = `
+                    <div class="card">
+                        <div class="card-image">Nairobi National Park Safari</div>
+                        <div class="card-content">
+                            <h3 class="card-title">Nairobi National Park Safari</h3>
+                            <p class="card-description">Experience wildlife just minutes from the city center. See lions, giraffes, and rhinos with Nairobi's skyline as backdrop.</p>
+                            <div class="card-footer">
+                                <span class="price">$150</span>
+                                <a href="#tours" class="btn btn-outline">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">Cultural City Tour</div>
+                        <div class="card-content">
+                            <h3 class="card-title">Cultural City Tour</h3>
+                            <p class="card-description">Explore vibrant local markets, museums, and historical sites. Taste authentic Kenyan cuisine and meet local artisans.</p>
+                            <div class="card-footer">
+                                <span class="price">$80</span>
+                                <a href="#tours" class="btn btn-outline">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="card">
+                        <div class="card-image">David Sheldrick Elephant Orphanage</div>
+                        <div class="card-content">
+                            <h3 class="card-title">Elephant Orphanage Visit</h3>
+                            <p class="card-description">Meet baby elephants and learn about conservation efforts. A heartwarming experience supporting wildlife protection.</p>
+                            <div class="card-footer">
+                                <span class="price">$100</span>
+                                <a href="#tours" class="btn btn-outline">Learn More</a>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+    </script>
+</body>
+</html>

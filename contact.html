@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - Touchdown Nairobi</title>
+    <link rel="shortcut icon" href="/img/2.png" type="image/x-icon">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background-color: #fafaf9;
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: white;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+        }
+
+       .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo svg {
+            width: 2.2rem;
+            height: 2.2rem;
+            color: #166534;
+        }
+        
+        .logo-text {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: #166534;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #166534;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            padding-bottom: 2px;
+        }
+
+        .nav-links a:hover {
+            color: #16a34a;
+        }
+
+        .nav-links a.active {
+            border-bottom: 2px solid #16a34a;
+        }
+
+        /* Main Content */
+        main {
+            padding: 2rem 0;
+        }
+
+        .back-link {
+            display: inline-flex;
+            align-items: center;
+            color: #16a34a;
+            text-decoration: none;
+            margin-bottom: 2rem;
+            transition: color 0.3s;
+        }
+
+        .back-link:hover {
+            color: #166534;
+        }
+
+        .back-link svg {
+            width: 1rem;
+            height: 1rem;
+            margin-right: 0.5rem;
+        }
+
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .page-header h1 {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #166534;
+            margin-bottom: 1rem;
+        }
+
+        .page-header p {
+            font-size: 1.125rem;
+            color: #78716c;
+            max-width: 32rem;
+            margin: 0 auto;
+        }
+
+        /* Content Grid */
+        .content-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 3rem;
+            max-width: 72rem;
+            margin: 0 auto;
+        }
+
+        /* Cards */
+        .card {
+            background: white;
+            border-radius: 0.5rem;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+        }
+
+        .card-content {
+            padding: 2rem;
+        }
+
+        /* Contact Form */
+        .form-section h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #166534;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-label {
+            display: block;
+            font-size: 0.875rem;
+            font-weight: 500;
+            color: #57534e;
+            margin-bottom: 0.5rem;
+        }
+
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-input:focus {
+            outline: none;
+            border-color: #16a34a;
+            box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+        }
+
+        .form-textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #d1d5db;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            resize: vertical;
+            min-height: 150px;
+            font-family: inherit;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+
+        .form-textarea:focus {
+            outline: none;
+            border-color: #16a34a;
+            box-shadow: 0 0 0 3px rgba(34, 197, 94, 0.1);
+        }
+
+        .form-button {
+            width: 100%;
+            background-color: #16a34a;
+            color: white;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .form-button:hover {
+            background-color: #15803d;
+        }
+
+        /* Contact Info */
+        .contact-info h2 {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #166534;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .contact-icon {
+            background-color: #dcfce7;
+            padding: 0.75rem;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        .contact-icon svg {
+            width: 1.25rem;
+            height: 1.25rem;
+            color: #16a34a;
+        }
+
+        .contact-details h3 {
+            font-weight: 600;
+            color: #166534;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-details p {
+            color: #78716c;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-details .small {
+            font-size: 0.875rem;
+            color: #a8a29e;
+        }
+
+        /* Special Cards */
+        .green-card {
+            background-color: #166534;
+            color: white;
+        }
+
+        .green-card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .green-card svg {
+            width: 1.5rem;
+            height: 1.5rem;
+        }
+
+        .green-card p {
+            color: #dcfce7;
+            margin-bottom: 1rem;
+        }
+
+        .outline-button {
+            background: transparent;
+            border: 1px solid white;
+            color: white;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.375rem;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background-color 0.3s, color 0.3s;
+        }
+
+        .outline-button:hover {
+            background-color: white;
+            color: #166534;
+        }
+
+        /* Map Section */
+        .map-placeholder {
+            background-color: #e7e5e4;
+            height: 12rem;
+            border-radius: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 1rem;
+        }
+
+        .map-content {
+            text-align: center;
+            color: #78716c;
+        }
+
+        .map-content svg {
+            width: 3rem;
+            height: 3rem;
+            margin: 0 auto 0.5rem;
+        }
+
+        .map-content p {
+            margin-bottom: 0.25rem;
+        }
+
+        .map-content .small {
+            font-size: 0.875rem;
+        }
+
+        .map-description {
+            font-size: 0.875rem;
+            color: #78716c;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: #166534;
+            color: white;
+            margin-top: 4rem;
+        }
+
+        .footer-container {
+            padding: 3rem 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        @media (min-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr;
+                gap: 2rem;
+            }
+        }
+
+        .footer-brand {
+            grid-column: span 1;
+        }
+
+        @media (min-width: 768px) {
+            .footer-brand {
+                grid-column: span 2;
+            }
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        .footer-logo-icon {
+            width: 2rem;
+            height: 2rem;
+            color: #86efac;
+        }
+
+        .footer-logo-text {
+            font-size: 1.5rem;
+            font-weight: bold;
+        }
+
+        .footer-description {
+            color: #bbf7d0;
+            margin-bottom: 1rem;
+            max-width: 28rem;
+            line-height: 1.6;
+        }
+
+        .footer-social {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .footer-social-link {
+            color: #86efac;
+            transition: color 0.2s;
+        }
+
+        .footer-social-link:hover {
+            color: white;
+        }
+
+        .footer-social-icon {
+            width: 1.25rem;
+            height: 1.25rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.125rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+
+        .footer-links li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-link {
+            color: #bbf7d0;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        .footer-link:hover {
+            color: white;
+        }
+
+        .footer-contact-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .footer-contact-item:last-child {
+            align-items: flex-start;
+        }
+
+        .footer-contact-icon {
+            width: 1rem;
+            height: 1rem;
+            color: #86efac;
+            margin-top: 0.125rem;
+        }
+
+        .footer-contact-text {
+            color: #bbf7d0;
+            font-size: 0.875rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid #15803d;
+            margin-top: 2rem;
+            padding-top: 2rem;
+            text-align: center;
+        }
+
+        .footer-copyright {
+            color: #bbf7d0;
+            font-size: 0.875rem;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .page-header h1 {
+                font-size: 4rem;
+            }
+
+            .footer-grid {
+                grid-template-columns: 2fr 1fr 1fr;
+                gap: 2rem;
+            }
+
+            .footer-brand {
+                grid-column: span 1;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            .content-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+
+            .nav-links {
+                display: flex;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .nav-links {
+                display: none;
+            }
+
+            .page-header h1 {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">
+                    <?xml version="1.0"?>
+                        <!DOCTYPE svg PUBLIC '-//W3C//DTD SVG 1.1//EN'  'http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd'>
+                        <svg enable-background="new 0 0 512 512" height="700px" id="passenger" version="1.1" viewBox="0 0 512 512" width="700px" xml:space="preserve" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <path fill="#166534" d="M336.53,64.002c-4.204,7.342-6.651,14.944-8.067,21.604c-3.655,17.198,3.353,35.099,17.842,45.058  c7.506,5.159,16.122,9.426,23.99,12.752c12.822,5.421,27.5-1.621,31.434-14.974l9.393-31.891  c6.191-21.026-5.245-43.205-25.966-50.352C366.777,39.86,346.19,47.132,336.53,64.002z"/>
+                        <path fill="#166534" d="M416.53,443.222l-61.046-148.163l17.32-95.263c1.473-8.095,0.361-16.478-3.369-23.811  c-6.434-12.648-20.309-29.393-48.925-30.731c0,0-2.868-0.424-7.003,0.239c-8.209,1.316-15.371,6.309-19.826,13.327l-67.955,107.028  c-3.028,4.77-3.115,10.582-0.717,15.297l-27.724,39.558L151.4,288.418c-10.291-7.24-24.502-4.768-31.743,5.523l-43.22,61.43  c-14.444,20.529-9.51,48.88,11.019,63.324l10.781,7.585c-1.165,3.278-1.831,6.791-1.831,10.468c0,17.298,14.022,31.32,31.32,31.32  c17.298,0,31.32-14.022,31.32-31.32c0-7.082-2.379-13.594-6.343-18.84l90.371-128.943c3.235-0.936,6.188-2.923,8.289-5.875  l55.534-78.048l-15.078,66.221c-1.994,8.753-0.587,17.936,3.936,25.69l96.773,165.939c1.869,3.205,5.301,5.176,9.011,5.176h32.429  c3.926,0,6.481-4.098,4.778-7.635C435.721,454.152,429.386,445.869,416.53,443.222z M143.563,436.748  c0,8.746-7.09,15.837-15.836,15.837s-15.836-7.091-15.836-15.837c0-0.28,0.027-0.555,0.042-0.832  c0.424-8.124,6.955-14.613,15.096-14.969c0.233-0.01,0.462-0.035,0.698-0.035c5.11,0,9.642,2.431,12.537,6.188  c1.121,1.454,2.006,3.1,2.57,4.892C143.306,433.493,143.563,435.09,143.563,436.748z"/>
+                        <path fill="#166534" d="M298.915,327.521c-2.547-3.994-8.654-2.992-9.751,1.616c-9.493,39.877-37.082,79.887-52.97,97.255  c-4.702,5.14-5.115,12.887-1.081,18.565l13.533,19.046c1.812,2.551,4.746,4.064,7.874,4.064h11.514c2.257,0,3.974-1.969,3.743-4.214  c-1.196-11.712-6.867-21.455-6.867-21.455c29.209-30.583,44.936-60.499,51.607-75.314c1.97-4.372,1.613-9.431-0.965-13.474  L298.915,327.521z"/>
+                        <path fill="#166534" d="M385.428,229.522c-2.087-2.064-5.633-0.979-6.207,1.9l-5.199,26.108c-0.399,2.01,0.295,4.08,1.827,5.442l45.262,40.236  c5.935,5.276,15.103,4.396,19.926-1.911c4.175-5.461,3.642-13.175-1.245-18.009L385.428,229.522z"/>
+                        </svg>
+
+                    <span class="logo-text">Touchdown Nairobi</span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/tours.html">Tours</a></li>
+                    <li><a href="/about.html">About</a></li>
+                    <li><a href="/contact.html" class="active">Contact</a></li>
+                    <li><a href="/faq.html">FAQ</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="container">
+            <a href="/" class="back-link">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="m12 19-7-7 7-7"/>
+                    <path d="M19 12H5"/>
+                </svg>
+                Back to Home
+            </a>
+
+            <!-- Page Header -->
+            <div class="page-header">
+                <h1>Let's Plan Your Trip!</h1>
+                <p>
+                    Ready to explore Nairobi and Kenya? Get in touch with Peterson to start planning your unforgettable
+                    adventure.
+                </p>
+            </div>
+
+            <div class="content-grid">
+                <!-- Contact Form -->
+                <div class="card form-section">
+                    <div class="card-content">
+                        <h2>Send us a Message</h2>
+                        <form id="contactForm">
+                            <div class="form-group">
+                                <label for="name" class="form-label">Your Name *</label>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                                    class="form-input"
+                                    placeholder="Enter your full name"
+                                    required
+                                />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="email" class="form-label">Email Address *</label>
+                                <input
+                                    type="email"
+                                    id="email"
+                                    name="email"
+                                    class="form-input"
+                                    placeholder="your.email@example.com"
+                                    required
+                                />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="phone" class="form-label">Phone Number</label>
+                                <input
+                                    type="tel"
+                                    id="phone"
+                                    name="phone"
+                                    class="form-input"
+                                    placeholder="+1 (555) 123-4567"
+                                />
+                            </div>
+
+                            <div class="form-group">
+                                <label for="message" class="form-label">Tell us about your trip *</label>
+                                <textarea
+                                    id="message"
+                                    name="message"
+                                    class="form-textarea"
+                                    placeholder="What would you like to see and do in Kenya? When are you planning to visit? How many people in your group?"
+                                    required
+                                ></textarea>
+                            </div>
+
+                            <button type="submit" class="form-button">Send Message</button>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <!-- Contact Details -->
+                    <div class="card">
+                        <div class="card-content">
+                            <h2>Get in Touch</h2>
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-details">
+                                    <h3>Phone</h3>
+                                    <p>+254 712 345 678</p>
+                                    <p class="small">Available 7 AM - 9 PM EAT</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="m3 21 1.9-5.7a8.5 8.5 0 1 1 3.8 3.8z"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-details">
+                                    <h3>WhatsApp</h3>
+                                    <p>+254 712 345 678</p>
+                                    <p class="small">Quick responses, photos welcome!</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                                        <polyline points="22,6 12,13 2,6"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-details">
+                                    <h3>Email</h3>
+                                    <p>peterson@tourskenya.com</p>
+                                    <p class="small">We reply within 24 hours</p>
+                                </div>
+                            </div>
+
+                            <div class="contact-item">
+                                <div class="contact-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                                        <circle cx="12" cy="10" r="3"/>
+                                    </svg>
+                                </div>
+                                <div class="contact-details">
+                                    <h3>Location</h3>
+                                    <p>Nairobi, Kenya</p>
+                                    <p class="small">Serving all of Kenya</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Response Time -->
+                    <div class="card green-card" style="margin-top: 1.5rem;">
+                        <div class="card-content">
+                            <h3>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"/>
+                                    <polyline points="12,6 12,12 16,14"/>
+                                </svg>
+                                Quick Response Guarantee
+                            </h3>
+                            <p>
+                                Peterson personally responds to all inquiries within 24 hours. For urgent requests, WhatsApp is the
+                                fastest way to reach us!
+                            </p>
+                            <button class="outline-button">WhatsApp Now</button>
+                        </div>
+                    </div>
+
+                    <!-- Map Placeholder -->
+                    <div class="card" style="margin-top: 1.5rem;">
+                        <div class="card-content">
+                            <h3 style="font-size: 1.25rem; font-weight: 600; color: #166534; margin-bottom: 1rem;">We're Based in Nairobi</h3>
+                            <div class="map-placeholder">
+                                <div class="map-content">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                        <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/>
+                                        <circle cx="12" cy="10" r="3"/>
+                                    </svg>
+                                    <p>Interactive Map</p>
+                                    <p class="small">Nairobi, Kenya</p>
+                                </div>
+                            </div>
+                            <p class="map-description">
+                                Centrally located in Nairobi with easy access to all major attractions and airports.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <div class="footer-grid">
+                <!-- Brand -->
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <svg class="footer-logo-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        <span class="footer-logo-text">Peterson Tours Kenya</span>
+                    </div>
+                    <p class="footer-description">
+                        Authentic Kenyan experiences with a local guide who's passionate about sharing the beauty, wildlife, and culture of his homeland.
+                    </p>
+                    <div class="footer-social">
+                        <a href="#" class="footer-social-link">
+                            <svg class="footer-social-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="footer-social-link">
+                            <svg class="footer-social-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.097.118.112.22.085.339-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.748-1.378 0 0-.599 2.299-.744 2.854-.269 1.045-1.004 2.352-1.498 3.146 1.123.345 2.306.535 3.55.535 6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001 12.017.001z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="footer-social-link">
+                            <svg class="footer-social-icon" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Quick Links -->
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul class="footer-links">
+                        <li><a href="/" class="footer-link">Home</a></li>
+                        <li><a href="/tours.html" class="footer-link">Tours & Activities</a></li>
+                        <li><a href="/about.html" class="footer-link">About Peterson</a></li>
+                        <li><a href="/contact.html" class="footer-link">Contact Us</a></li>
+                        <li><a href="/faq.html" class="footer-link">FAQ</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact Info -->
+                <div class="footer-section">
+                    <h3>Contact Info</h3>
+                    <div class="footer-contact">
+                        <div class="footer-contact-item">
+                            <svg class="footer-contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                            </svg>
+                            <span class="footer-contact-text">+254 712 345 678</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <svg class="footer-contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                            </svg>
+                            <span class="footer-contact-text">peterson@tourskenya.com</span>
+                        </div>
+                        <div class="footer-contact-item">
+                            <svg class="footer-contact-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                            </svg>
+                            <span class="footer-contact-text">Nairobi, Kenya</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Bottom Bar -->
+            <div class="footer-bottom">
+                <p class="footer-copyright">
+                    © 2025 Peterson Tours Kenya. All rights reserved. | Crafted with ❤️ in Nairobi
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Simple form handling
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! Peterson will get back to you within 24 hours.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
