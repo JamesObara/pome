@@ -595,7 +595,7 @@
             <section class="cta-section">
                 <h2>Can't Find What You're Looking For?</h2>
                 <p>We specialize in custom tours tailored to your interests and schedule</p>
-                <a href="#contact" class="cta-btn">Plan a Custom Tour</a>
+                <a href="./contact" class="cta-btn">Plan a Custom Tour</a>
             </section>
         </div>
     </div>
@@ -710,7 +710,7 @@
             fetch('https://raw.githubusercontent.com/JamesObara/pome/main/data/tours.json')
                 .then(res => res.json())
                 .then(tours => {
-                    toursData = tours; // Store tours for filtering
+                    toursData = tours; 
                     renderTours(toursData); // Initial render
                     setupFilterButtons(); // Setup filter button event listeners
                 })
