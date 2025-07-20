@@ -57,9 +57,78 @@
             color: #166534;
         }
         
+         #hamburger {
+            cursor: pointer;
+            width: 30px;
+            height: 20px;
+            position: relative;
+            z-index: 1000;
+            display: none;
+        }
+
+        #hamburger span {
+            background: #333;
+            display: block;
+            height: 2.2px;
+            margin: 5px 0;
+            transition: all 0.3s ease-in-out;
+        }
+
+        #hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        #hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        #hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+        
         .nav-links {
             display: none;
             gap: 1.5rem;
+        }
+
+        .nav-links a.active {
+            border-bottom: 2px solid #16a34a;
+        }
+
+        @media screen and (max-width: 768px) {
+            #hamburger {
+                display: block;
+            }
+
+            #nav-links {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: #fff;
+                justify-content: center;
+                align-items: center;
+                z-index: 999;
+            }
+
+            #nav-links a {
+                font-size: 1.2rem;
+                margin: 1rem 0;
+                color: #333;
+            }
+
+            #nav-links.active {
+                display: flex;
+            }
+
+            .navbar {
+                justify-content: space-between;
+            }
+
+
         }
         
         .nav-links a {
@@ -67,15 +136,10 @@
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
-            padding-bottom: 0.25rem;
         }
         
         .nav-links a:hover {
             color: #16a34a;
-        }
-        
-        .nav-links a.active {
-            border-bottom: 2px solid #16a34a;
         }
         
         @media (min-width: 768px) {
@@ -485,12 +549,17 @@
 
                     <span class="logo-text">Touchdown Nairobi</span>
                 </div>
-                <div class="nav-links">
-                    <a href="/">Home</a>
-                    <a href="/tours.html" class="active">Tours</a>
-                    <a href="/about.html">About</a>
-                    <a href="/contact.html">Contact</a>
-                    <a href="/faq.html">FAQ</a>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="nav-links" id="nav-links" >
+                    <a href="./">Home</a>
+                    <a href="./tours" class="active">Tours</a>
+                    <a href="./about">About</a>
+                    <a href="./contact">Contact</a>
+                    <a href="./faq">FAQ</a>
                 </div>
             </nav>
         </div>
@@ -498,7 +567,7 @@
 
     <div class="container">
         <div class="main-content">
-            <a href="#home" class="back-link">
+            <a href="./" class="back-link">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                     <path d="M19 12H5M12 19l-7-7 7-7"/>
                 </svg>
@@ -571,11 +640,11 @@
                     <div class="footer-section">
                         <h3>Quick Links</h3>
                         <ul class="footer-links">
-                            <li><a href="/">Home</a></li>
-                            <li><a href="/tours.html">Tours & Activities</a></li>
-                            <li><a href="/about.html">About Peterson</a></li>
-                            <li><a href="/contact.html">Contact Us</a></li>
-                            <li><a href="/faq.html">FAQ</a></li>
+                            <li><a href="./">Home</a></li>
+                            <li><a href="./tours">Tours & Activities</a></li>
+                            <li><a href="./about">About Peterson</a></li>
+                            <li><a href="./contact">Contact Us</a></li>
+                            <li><a href="./faq">FAQ</a></li>
                         </ul>
                     </div>
                     
@@ -616,11 +685,29 @@
     </footer>
 
     <script>
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('nav-links');
+
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+        });
+
         document.addEventListener('DOMContentLoaded', () => {
             let toursData = []; // Store tours data globally
 
             // Fetch tours data
-            fetch('data/tours.json')
+            fetch('https://raw.githubusercontent.com/JamesObara/pome/main/data/tours.json')
                 .then(res => res.json())
                 .then(tours => {
                     toursData = tours; // Store tours for filtering

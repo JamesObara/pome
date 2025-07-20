@@ -37,45 +37,114 @@
             justify-content: space-between;
             padding: 1rem 0;
         }
-
+        
         .logo {
             display: flex;
             align-items: center;
             gap: 0.5rem;
         }
-
+        
         .logo svg {
             width: 2.2rem;
             height: 2.2rem;
             color: #15803d;
         }
-
+        
         .logo-text {
             font-size: 1.2rem;
             font-weight: bold;
             color: #166534;
         }
-
-        .nav-links {
-            display: flex;
-            gap: 1.5rem;
-            list-style: none;
+        
+         #hamburger {
+            cursor: pointer;
+            width: 30px;
+            height: 20px;
+            position: relative;
+            z-index: 1000;
+            display: none;
         }
 
+        #hamburger span {
+            background: #333;
+            display: block;
+            height: 2.2px;
+            margin: 5px 0;
+            transition: all 0.3s ease-in-out;
+        }
+
+        #hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+
+        #hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        #hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -7px);
+        }
+        
+        .nav-links {
+            display: none;
+            gap: 1.5rem;
+        }
+
+        .nav-links a.active {
+            border-bottom: 2px solid #16a34a;
+        }
+
+        @media screen and (max-width: 768px) {
+            #hamburger {
+                display: block;
+            }
+
+            #nav-links {
+                display: none;
+                flex-direction: column;
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+                background: #fff;
+                justify-content: center;
+                align-items: center;
+                z-index: 999;
+            }
+
+            #nav-links a {
+                font-size: 1.2rem;
+                margin: 1rem 0;
+                color: #333;
+            }
+
+            #nav-links.active {
+                display: flex;
+            }
+
+            .navbar {
+                justify-content: space-between;
+            }
+
+
+        }
+        
         .nav-links a {
             color: #166534;
             text-decoration: none;
             font-weight: 500;
             transition: color 0.3s;
-            padding-bottom: 2px;
         }
-
+        
         .nav-links a:hover {
             color: #16a34a;
         }
-
-        .nav-links a.active {
-            border-bottom: 2px solid #16a34a;
+        
+        @media (min-width: 768px) {
+            .nav-links {
+                display: flex;
+            }
         }
 
         /* Main Content */
@@ -441,13 +510,18 @@
 
                     <span class="logo-text">Touchdown Nairobi</span>
                 </div>
-                <ul class="nav-links">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/tours.html">Tours</a></li>
-                    <li><a href="/about.html" class="active">About</a></li>
-                    <li><a href="/contact.html">Contact</a></li>
-                    <li><a href="/faq.html">FAQ</a></li>
-                </ul>
+                <div class="hamburger" id="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <div class="nav-links" id="nav-links">
+                    <a href="/">Home</a>
+                    <a href="/tours.html">Tours</a>
+                    <a class="active" href="/about.html">About</a>
+                    <a href="/contact.html">Contact</a>
+                    <a href="/faq.html">FAQ</a>
+                </div>
             </nav>
         </div>
     </header>
@@ -631,5 +705,24 @@
             </div>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const hamburger = document.getElementById('hamburger');
+            const navLinks = document.getElementById('nav-links');
+
+            hamburger.addEventListener('click', () => {
+                hamburger.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            navLinks.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => {
+                    hamburger.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+        });
+    </script>
 </body>
 </html>
