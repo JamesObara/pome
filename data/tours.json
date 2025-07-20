@@ -1,14 +1,14 @@
 [
     {
         "id": "$tour1",
-        "title": "Weekend Safari",
+        "title": "Ngong hills",
         "description": "Experience the world-famous Maasai Mara with game drives, cultural visits, and luxury camping under the stars.",
         "duration": "2 days",
         "groupSize": "2-6 people",
         "price": "$350",
         "category": "Nature",
         "type": "Weekend Getaways",
-        "image": "https://naicef.com/wp-content/uploads/2025/01/Nairobi-National-Park-Nairobi-National-Park-Nairobi-Nairobi-National-Park-safari-Nairobi-National-Park-animal-orphanage-Nairobi-National-Park-entrance-fees.jpg",
+        "image": "https://cdn.getyourguide.com/image/format=auto,fit=crop,gravity=auto,quality=60,width=450,height=450,dpr=2/tour_img/8227b83b81a08e6a436da441cc9b9ffb462db754cc3e827d977b13ee8a3c4229.jpeg",
         "gallery": [
             "https://upload.wikimedia.org/wikipedia/commons/1/17/Masai_Mara_at_Sunset.jpg",
             "https://upload.wikimedia.org/wikipedia/commons/1/17/Masai_Mara_at_Sunset.jpg",
